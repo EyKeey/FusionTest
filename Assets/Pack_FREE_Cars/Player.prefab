@@ -65,6 +65,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8663673574762740106, guid: 3f83a5a9639ce0249ac0d7df9b8c40b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8082539749084705512}
+    - targetCorrespondingSourceObject: {fileID: 8663673574762740106, guid: 3f83a5a9639ce0249ac0d7df9b8c40b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5355074245658306997}
+    - targetCorrespondingSourceObject: {fileID: 8663673574762740106, guid: 3f83a5a9639ce0249ac0d7df9b8c40b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2605517022444419707}
   m_SourcePrefab: {fileID: 100100000, guid: 3f83a5a9639ce0249ac0d7df9b8c40b9, type: 3}
 --- !u!1 &4369170316420671478 stripped
 GameObject:
@@ -83,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fca32d9b3d2cb341aa9343ce60aec89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carSpeed: 120
+  carSpeed: 20
   turnSpeed: 120
   reverseSpeed: 100
   acceleration: 90
@@ -135,3 +141,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2859704, y: 2.040961, z: 4.398433}
   m_Center: {x: -0.000000834465, y: 0.99298775, z: -0.16744733}
+--- !u!114 &5355074245658306997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369170316420671478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1359018609
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 144185366219147427}
+  - {fileID: -2605517022444419707}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &-2605517022444419707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369170316420671478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

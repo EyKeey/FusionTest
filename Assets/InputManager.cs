@@ -74,17 +74,13 @@ public class InputManager : MonoBehaviour
     /// </summary>
     void HandlePCInput()
     {
-        // E?er hi? dokunmatik yoksa, PC inputunu al
+        
         if (Input.touchCount == 0)
         {
-            horizontalInput = Input.GetAxisRaw("Horizontal"); // A/D veya Sol/Sa? ok tu?lar?
+            horizontalInput = Input.GetAxisRaw("Horizontal");
 
-            // Geri gitmek i?in "S" ya da "DownArrow" tu?una bas?l?rsa
             isReversing = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
-            // Debug i?in hangi tu?lara bas?ld???n? takip etmek istersen
-            leftPressed = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-            rightPressed = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
         }
     }
 }

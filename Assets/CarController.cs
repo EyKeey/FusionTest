@@ -1,7 +1,8 @@
+using Fusion;
 using System;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarController : NetworkBehaviour
 {
     [Header("Car Settings")]
     [SerializeField] public float carSpeed = 80f;
@@ -13,23 +14,33 @@ public class CarController : MonoBehaviour
     private float currentSpeed = 0f;
 
     private Rigidbody rb;
-    private InputManager inputManager;
+    private NetworkInputData inputData;
 
-    private void Start()
+    public override void Spawned()
     {
-        rb = GetComponent<Rigidbody>();
-        inputManager = InputManager.Instance;
+        rb = GetComponent<Rigidbody>();    
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateNetwork()
     {
-        HandleRotation();
-        HandleMovement();
+        if(GetInput(out NetworkInputData inputData))
+        {
+            this.inputData = inputData;
+
+            HandleRotation(inputData);
+            HandleMovement(inputData);
+        }
     }
 
-    private void HandleRotation()
+
+    private void HandleRotation(NetworkInputData inputData)
     {
-        float horizontalInput = inputManager.horizontalInput;
+        if(!Object.HasInputAuthority)
+        {
+            return;
+        }
+
+        float horizontalInput = inputData.horizontalInput;
         float rbVelocityMag = rb.velocity.magnitude;
 
         //Araba max h?zda ise de?er 1 olacak. duruyorsa 0 olacak. ne kadar h?zl? gidiyor ise o kadar kolay sapacak. 
@@ -40,13 +51,18 @@ public class CarController : MonoBehaviour
 
         rb.MoveRotation(rb.rotation * turnRotation);
     }
-    private void HandleMovement()
+    private void HandleMovement(NetworkInputData inputData)
     {
-        if (inputManager.isReversing)
+        if (!Object.HasInputAuthority)
+        {
+            return;
+        }
+
+        if (inputData.isReversing)
         {
             targetSpeed = -reverseSpeed;
         }
-        else if (inputManager.horizontalInput == 0)
+        else if (inputData.horizontalInput == 0)
         {
             targetSpeed = carSpeed;
         }
